@@ -1,0 +1,12 @@
+﻿@model RegistrationModel
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+<div class="text-center">
+    <h3>Você realmente deseja apagar o cadastro (@Model.Name)?</h3>
+    <br />
+    
+    <a role="button" class="btn btn-danger btn-lg" asp-controller="Registration" asp-route-id="@Model.Id" asp-action="Delete">Confirmar exclusão</a>
+    <a role="button" class="btn btn-primary btn-lg" asp-controller="Registration" asp-action="Index">Cancelar exclusão</a>
+</div>

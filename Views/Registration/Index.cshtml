@@ -1,0 +1,47 @@
+﻿@model List<RegistrationModel>
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+<div>
+    <h1 class="display-4">Listagem de contatos</h1>
+    <br />
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" asp-controller="Registration" asp-action="Register">Adicione um contato</a>
+    </div>
+    <br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Cpf</th>
+                <th scope="col">Telefone</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any()) {
+                foreach (var register in Model)
+                {
+                    <tr>
+                        <th scope="row">@register.Id</th>
+                        <td>@register.Name</td>
+                        <td>@register.Email</td>
+                        <td>@register.Cpf</td>
+                        <td>@register.Phone</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Exemplo básico">
+                                <a role="button" class="btn btn-primary" asp-route-id="@register.Id" asp-controller="Registration" asp-action="Edit">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@register.Id" asp-controller="Registration" asp-action="ConfirmationDelete">Deletar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
